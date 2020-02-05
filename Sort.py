@@ -27,9 +27,6 @@ def insertion_sort(arr):
       
 if __name__ == '__main__':
 
-	a = [8,7,6,5,4,3,2,1]
-	b = [8,7,6,5,4,3,2,1]
-
 	asc1000_A = list(range(1000))
 	asc2500_A = list(range(2500))
 	asc5000_A = list(range(5000))
@@ -98,6 +95,32 @@ if __name__ == '__main__':
 	for i in range(10000):
 		rand10000_B.append(rand10000_A[i])
 
+
+	start = time.process_time()
+	insertion_sort(asc1000_A)
+	end = time.process_time()
+	print('One Thousand Increasing Insertion: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
+	insertion_sort(asc2500_A)
+	end = time.process_time()
+	print('Two Thousand Five Hundred Increasing Insertion: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
+	insertion_sort(asc5000_A)
+	end = time.process_time()
+	print('Five Thousand Increasing Insertion: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
+	insertion_sort(asc7500_A)
+	end = time.process_time()
+	print('Seven Thousand Five Hundred Increasing Insertion: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
+	insertion_sort(asc10000_A)
+	end = time.process_time()
+	print('Ten Thousand Increasing Insertion: ' + '{:.6f}'.format(end-start))
+	
 	#print(temporary)
 	#insertion_sort(aList)
 	#print(temporary)
