@@ -32,6 +32,14 @@ def increasing_order(arr, val):
 def decreasing_order(arr,val):
     for k in reversed(range(val)):
         arr.append(k)
+
+def random_order(arr,val):
+	for k in range(val):
+		arr.append(random.randint(0,val))
+
+def copy_arr(arr1, arr2):
+	for k in arr1:
+		arr2.append(k)
       
 if __name__ == '__main__':
 
