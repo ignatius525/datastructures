@@ -27,11 +27,11 @@ def insertion_sort(arr):
 
 def increasing_order(arr, val):
     for k in range(val):
-        arr.append(val)
+        arr.append(k)
 
 def decreasing_order(arr,val):
     for k in reversed(range(val)):
-        arr.append(val)
+        arr.append(k)
       
 if __name__ == '__main__':
 
@@ -129,6 +129,13 @@ if __name__ == '__main__':
 	end = time.process_time()
 	print('Ten Thousand Increasing Insertion: ' + '{:.6f}'.format(end-start))
 	
+	temparr = []
+	increasing_order(temparr,1000)
+	print(temparr)
+
+	temporary = []
+	decreasing_order(temporary,1000)
+	print(temporary)
 	#print(temporary)
 	#insertion_sort(aList)
 	#print(temporary)
