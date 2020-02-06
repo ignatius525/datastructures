@@ -55,8 +55,6 @@ if __name__ == '__main__':
 	asc7500_B = list(range(7500))
 	asc10000_B = list(range(10000))
 
-	aList = list(reversed(range(50)))
-
 	des1000_A = list(reversed(range(1000)))
 	des2500_A = list(reversed(range(2500)))
 	des5000_A = list(reversed(range(5000)))
@@ -69,47 +67,36 @@ if __name__ == '__main__':
 	des7500_B = list(reversed(range(7500)))
 	des10000_B = list(reversed(range(10000)))
 
-	temporary = aList
-
 	rand1000_A = []
-	for i in range(1000):
-		rand1000_A.append(random.randint(0,1000))
+	random_order(rand1000_A, 1000)
 
 	rand1000_B = []
-	for i in range(1000):
-		rand1000_B.append(rand1000_A[i])
+	copy_arr(rand1000_A, rand1000_B)
 
 	rand2500_A = []
-	for i in range(2500):
-		rand2500_A.append(random.randint(0,2500))
-	
+	random_order(rand2500_A, 2500)
+
 	rand2500_B = []
-	for i in range(2500):
-		rand2500_B.append(rand2500_A[i])
-	
+	copy_arr(rand2500_A, rand2500_B)
+
 	rand5000_A = []
-	for i in range(5000):
-		rand5000_A.append(random.randint(0,5000))
-	
+	random_order(rand5000_A, 5000)
+
 	rand5000_B = []
-	for i in range(5000):
-		rand5000_B.append(rand5000_A[i])
-	
+	copy_arr(rand5000_A, rand5000_B)
+
 	rand7500_A = []
-	for i in range(7500):
-		rand7500_A.append(random.randint(0,7500))
+	random_order(rand7500_A, 7500)
 
 	rand7500_B = []
-	for i in range(7500):
-		rand7500_B.append(rand7500_A[i])
+	copy_arr(rand7500_A, rand7500_B)
 
 	rand10000_A = []
-	for i in range(10000):
-		rand10000_A.append(random.randint(0,10000))
+	random_order(rand10000_A, 10000)
 
 	rand10000_B = []
-	for i in range(10000):
-		rand10000_B.append(rand10000_A[i])
+	copy_arr(rand10000_A, rand10000_B)
+
 
 
 	start = time.process_time()
@@ -118,9 +105,19 @@ if __name__ == '__main__':
 	print('One Thousand Increasing Insertion: ' + '{:.6f}'.format(end-start))
 
 	start = time.process_time()
+	selection_sort(asc1000_B)
+	end = time.process_time()
+	print('One Thousand Increasing Selection: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
 	insertion_sort(asc2500_A)
 	end = time.process_time()
 	print('Two Thousand Five Hundred Increasing Insertion: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
+	selection_sort(asc2500_B)
+	end = time.process_time()
+	print('Two Thousand Five Hundred Increasing Selection: ' + '{:.6f}'.format(end-start))
 
 	start = time.process_time()
 	insertion_sort(asc5000_A)
@@ -128,22 +125,81 @@ if __name__ == '__main__':
 	print('Five Thousand Increasing Insertion: ' + '{:.6f}'.format(end-start))
 
 	start = time.process_time()
+	selection_sort(asc5000_B)
+	end = time.process_time()
+	print('Five Thousand Increasing Selection: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
 	insertion_sort(asc7500_A)
 	end = time.process_time()
 	print('Seven Thousand Five Hundred Increasing Insertion: ' + '{:.6f}'.format(end-start))
 
 	start = time.process_time()
+	selection_sort(asc7500_B)
+	end = time.process_time()
+	print('Seven Thousand Five Hundred Increasing Selection: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
 	insertion_sort(asc10000_A)
 	end = time.process_time()
 	print('Ten Thousand Increasing Insertion: ' + '{:.6f}'.format(end-start))
-	
-	temparr = []
-	increasing_order(temparr,1000)
-	print(temparr)
 
-	temporary = []
-	decreasing_order(temporary,1000)
-	print(temporary)
+	start = time.process_time()
+	selection_sort(asc10000_B)
+	end = time.process_time()
+	print('Ten Thousand Increasing Selection: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
+	insertion_sort(des1000_A)
+	end = time.process_time()
+	print('One Thousand Decreasing Insertion: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
+	selection_sort(des1000_B)
+	end = time.process_time()
+	print('One Thousand Decreasing Selection: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
+	insertion_sort(des2500_A)
+	end = time.process_time()
+	print('Two Thousand Five Hundred Decreasing Insertion: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
+	selection_sort(des2500_B)
+	end = time.process_time()
+	print('Two Thousand Five Hundred Decreasing Selection: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
+	insertion_sort(des5000_A)
+	end = time.process_time()
+	print('Five Thousand Decreasing Insertion: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
+	selection_sort(des5000_B)
+	end = time.process_time()
+	print('Five Thousand Decreasing Selection: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
+	insertion_sort(des7500_A)
+	end = time.process_time()
+	print('Seven Thousand Five Hundred Decreasing Insertion: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
+	selection_sort(des7500_B)
+	end = time.process_time()
+	print('Seven Thousand Five Hundred Decreasing Selection: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
+	insertion_sort(des10000_A)
+	end = time.process_time()
+	print('Ten Thousand Decreasing Insertion: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
+	selection_sort(des10000_B)
+	end = time.process_time()
+	print('Ten Thousand Decreasing Selection: ' + '{:.6f}'.format(end-start))
+	
+	
 	#print(temporary)
 	#insertion_sort(aList)
 	#print(temporary)
