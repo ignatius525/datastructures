@@ -24,6 +24,14 @@ def insertion_sort(arr):
             arr[j] = arr[j-1]
             j = j-1
         arr[j] = cur
+
+def increasing_order(arr, val):
+    for k in range(val):
+        arr.append(val)
+
+def decreasing_order(arr,val):
+    for k in reversed(range(val)):
+        arr.append(val)
       
 if __name__ == '__main__':
 
