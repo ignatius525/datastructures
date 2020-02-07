@@ -199,6 +199,25 @@ if __name__ == '__main__':
 	end = time.process_time()
 	print('Ten Thousand Decreasing Selection: ' + '{:.6f}'.format(end-start))
 	
+	start = time.process_time()
+	insertion_sort(rand1000_A)
+	end = time.process_time()
+	print('One Thousand Random Order Insertion: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
+	selection_sort(rand1000_B)
+	end = time.process_time()
+	print('One Thousand Random Order Selection: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
+	insertion_sort(rand2500_A)
+	end = time.process_time()
+	print('Two Thousand Five Hundred Random Order Insertion: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
+	selection_sort(rand2500_B)
+	end = time.process_time()
+	print('Two Thousand Five Hundred Random Order Selection: ' + '{:.6f}'.format(end-start))
 	
 	#print(temporary)
 	#insertion_sort(aList)
