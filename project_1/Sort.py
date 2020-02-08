@@ -218,16 +218,35 @@ if __name__ == '__main__':
 	selection_sort(rand2500_B)
 	end = time.process_time()
 	print('Two Thousand Five Hundred Random Order Selection: ' + '{:.6f}'.format(end-start))
-	
-	#print(temporary)
-	#insertion_sort(aList)
-	#print(temporary)
+
+	start = time.process_time()
+	insertion_sort(rand5000_A)
+	end = time.process_time()
+	print('Five Thousand Random Order Insertion: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
+	selection_sort(rand5000_B)
+	end = time.process_time()
+	print('Five Thousand Random Order Selection: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
+	insertion_sort(rand7500_A)
+	end = time.process_time()
+	print('Seven Thousand Five Hundred Random Order Insertion: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
+	selection_sort(rand7500_B)
+	end = time.process_time()
+	print('Seven Thousand Five Hundred Random Order Selection: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
+	insertion_sort(rand10000_A)
+	end = time.process_time()
+	print('Ten Thousand Random Order Insertion: ' + '{:.6f}'.format(end-start))
+
+	start = time.process_time()
+	selection_sort(rand10000_B)
+	end = time.process_time()
+	print('Ten Thousand Random Order Selection: ' + '{:.6f}'.format(end-start))
 
 
-		
-
-	#insertion_sort(a)
-	#print(a)
-	#print("")
-	#selection_sort(b)
-	#print(b)
