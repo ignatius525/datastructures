@@ -25,25 +25,18 @@ def insertion_sort(arr):
             j = j-1
         arr[j] = cur
 
-def increasing_order(arr, val):
-    for k in range(val):
-        arr.append(k)
 
-def decreasing_order(arr,val):
-    for k in reversed(range(val)):
-        arr.append(k)
-
-def random_order(arr,val):
+def random_order(arr,val):    #function to create array with random values
 	for k in range(val):
 		arr.append(random.randint(0,val))
 
-def copy_arr(arr1, arr2):
+def copy_arr(arr1, arr2):      #function to modify an already existing array by copying values from a different array into it. Used to make random order arrays with same values
 	for k in arr1:
 		arr2.append(k)
       
 if __name__ == '__main__':
 
-	asc1000_A = list(range(1000))
+	asc1000_A = list(range(1000))  #making all the arrays of increasing and decreasing order using range and reverse functions
 	asc2500_A = list(range(2500))
 	asc5000_A = list(range(5000))
 	asc7500_A = list(range(7500))
@@ -67,7 +60,7 @@ if __name__ == '__main__':
 	des7500_B = list(reversed(range(7500)))
 	des10000_B = list(reversed(range(10000)))
 
-	rand1000_A = []
+	rand1000_A = []                #making all of the arrays of random order. One array of random order is created, while a second array of the same length is created with same values as the first.
 	random_order(rand1000_A, 1000)
 
 	rand1000_B = []
@@ -99,7 +92,7 @@ if __name__ == '__main__':
 
 
 
-	start = time.process_time()
+	start = time.process_time()                                              #data collection begins here. Code generated 30 timings at a time. Was run 5 times and averaged
 	insertion_sort(asc1000_A)
 	end = time.process_time()
 	print('One Thousand Increasing Insertion: ' + '{:.6f}'.format(end-start))
