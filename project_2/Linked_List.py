@@ -58,6 +58,7 @@ class Linked_List:
     cur.next.prev = newest
     newest.next = cur.next
     cur.next = newest
+    self.__size +=1
     pass
 
   def remove_element_at(self, index):
