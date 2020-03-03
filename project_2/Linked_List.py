@@ -9,7 +9,6 @@ class Linked_List:
       self.val = val
       self.next = next
       self.prev = prev
-      return 
 
   def __init__(self):
     # declare and initialize the private attributes
@@ -18,6 +17,8 @@ class Linked_List:
 
     self.__header = self.__Node(None, None, None)
     self.__trailer = self.__Node(None, None, None)
+    self.__header.next = self.__trailer
+    self.__trailer.prev = self.__header
     self.__size = 0
     pass
 
@@ -25,14 +26,19 @@ class Linked_List:
     # return the number of value-containing nodes in 
     # this list.
     # TODO replace pass with your implementation
-    pass
+    return self.__size
 
   def append_element(self, val):
     # increase the size of the list by one, and add a
     # node containing val at the new tail position. this 
     # is the only way to add items at the tail position.
     # TODO replace pass with your implementation
-    pass
+    newest = self.__Node(val, None, None)
+    newest.next = self.__trailer
+    newest.prev = self.__trailer.prev
+    self.__trailer.prev = newest
+    newest.next.prev = newest
+    self.__size +=1
 
   def insert_element_at(self, val, index):
     # assuming the head position (not the header node)
@@ -42,6 +48,16 @@ class Linked_List:
     # exception. This method cannot be used to add an 
     # item at the tail position.
     # TODO replace pass with your implementation
+    if index > self.__size:
+      self.append_element(val)
+    newest = self.__Node(val, None, None)
+    cur = self.__header.next
+    for k in range(index):
+      cur = cur.next
+    newest.prev = cur.next.prev
+    cur.next.prev = newest
+    newest.next = cur.next
+    cur.next = newest
     pass
 
   def remove_element_at(self, index):
