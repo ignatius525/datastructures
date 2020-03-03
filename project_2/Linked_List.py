@@ -20,7 +20,6 @@ class Linked_List:
     self.__header.next = self.__trailer
     self.__trailer.prev = self.__header
     self.__size = 0
-    pass
 
   def __len__(self):
     # return the number of value-containing nodes in 
@@ -98,7 +97,14 @@ class Linked_List:
     # call str(val_object) on them to get their string
     # representations.
     # TODO replace pass with your implementation
-    pass
+    if self.__size == 0:
+      return '[]'
+    cur = self.__header.next
+    list_str = []
+    for i in range(self.__size):
+      list_str.append(str(my_list.get_element_at(i)))
+    return list_str
+    
 
   def __iter__(self):
     # initialize a new attribute for walking through your list
@@ -125,4 +131,7 @@ if __name__ == '__main__':
   # from head to tail? Your writeup should explain why you chose the
   # test cases. Leave all test cases in your code when submitting.
   # TODO replace pass with your tests
-  pass
+  my_list = Linked_List()
+  my_list.append_element(2)
+  print(my_list) 
+  
