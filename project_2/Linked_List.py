@@ -2,21 +2,21 @@ class Linked_List:
   
   class __Node:
     
-    def __init__(self, val, next, prev):
+    def __init__(self, val):
       # declare and initialize the private attributes
       # for objects of the Node class.
       # TODO replace pass with your implementation
       self.val = val
-      self.next = next
-      self.prev = prev
+      self.next = None
+      self.prev = None
 
   def __init__(self):
     # declare and initialize the private attributes
     # for objects of the sentineled Linked_List class
     # TODO replace pass with your implementation
 
-    self.__header = self.__Node(None, None, None)
-    self.__trailer = self.__Node(None, None, None)
+    self.__header = self.__Node(None)
+    self.__trailer = self.__Node(None)
     self.__header.next = self.__trailer
     self.__trailer.prev = self.__header
     self.__size = 0
@@ -32,11 +32,11 @@ class Linked_List:
     # node containing val at the new tail position. this 
     # is the only way to add items at the tail position.
     # TODO replace pass with your implementation
-    newest = self.__Node(val, None, None)
+    newest = self.__Node(val)
     newest.next = self.__trailer
     newest.prev = self.__trailer.prev
     self.__trailer.prev = newest
-    newest.next.prev = newest
+    newest.prev.next = newest
     self.__size +=1
 
   def insert_element_at(self, val, index):
@@ -48,17 +48,20 @@ class Linked_List:
     # item at the tail position.
     # TODO replace pass with your implementation
     if index > self.__size:
-      self.append_element(val)
-    newest = self.__Node(val, None, None)
+      return IndexError
+    if index == self.__size:
+      return self.append_element(val)
+    newest = self.__Node(val)
     cur = self.__header.next
-    for k in range(index):
+    count = 1
+    while count < index:
       cur = cur.next
+      count += 1
     newest.prev = cur.next.prev
     cur.next.prev = newest
     newest.next = cur.next
     cur.next = newest
     self.__size +=1
-    pass
 
   def remove_element_at(self, index):
     # assuming the head position (not the header node)
@@ -66,7 +69,18 @@ class Linked_List:
     # in the node at the specified index. If the index 
     # is invalid, raise an IndexError exception.
     # TODO replace pass with your implementation
+    if index > self.__size:
+      return IndexError
+    cur = self.__header.next
+    count = 1
+    while count < index-1:
+      cur = cur.next
+      count += 1
+    cur.next = cur.prev
+    cur.prev = cur.next 
+    self.__size -=1
     pass
+    
 
   def get_element_at(self, index):
     # assuming the head position (not the header node)
@@ -75,7 +89,18 @@ class Linked_List:
     # the list. If the specified index is invalid, raise 
     # an IndexError exception.
     # TODO replace pass with your implementation
-    pass
+    if index >= self.__size:
+      return IndexError
+    cur = self.__header.next
+    count = 0
+    while(cur):
+      if (count == index):
+        return cur.val
+      count +=1
+      cur = cur.next
+
+
+     
 
   def rotate_left(self):
     # rotate the list left one position. Conceptual indices
@@ -100,9 +125,13 @@ class Linked_List:
     if self.__size == 0:
       return '[]'
     cur = self.__header.next
-    list_str = []
-    for i in range(self.__size):
-      list_str.append(str(my_list.get_element_at(i)))
+    list_str = '['
+    while cur is not self.__trailer:
+      list_str = list_str + str(cur.val)
+      if cur.next is not self.__trailer:
+        list_str = list_str + ', '
+      cur = cur.next
+    list_str = list_str + ']'
     return list_str
     
 
@@ -110,6 +139,7 @@ class Linked_List:
     # initialize a new attribute for walking through your list
     # TODO insert your initialization code before the return
     # statement. do not modify the return statement.
+    self.__iter_index = 0
     return self
 
   def __next__(self):
@@ -117,6 +147,9 @@ class Linked_List:
     # fetch the next value and return it. If there are no more 
     # values to fetch, raise a StopIteration exception.
     # TODO replace pass with your implementation
+    if self.__iter_index == self.__size:
+      return StopIteration
+    
     pass
 
 if __name__ == '__main__':
@@ -133,5 +166,13 @@ if __name__ == '__main__':
   # TODO replace pass with your tests
   my_list = Linked_List()
   my_list.append_element(2)
-  print(my_list) 
-  
+  my_list.append_element(4)
+  my_list.append_element(-3)
+  my_list.append_element(69)
+  print(my_list)
+  print(len(my_list))
+  print(my_list.get_element_at(1))
+  my_list.insert_element_at(5,1)
+  print(my_list)
+  my_list.remove_element_at(2)
+  print(my_list)
