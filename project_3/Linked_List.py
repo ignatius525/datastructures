@@ -34,7 +34,9 @@ class Linked_List:
     if index >= self.__size or index < 0:
       raise IndexError
     newest = self.__Node(val)
-    if index < self.__size / 2:
+    if index == 0:
+      cur = self.__header
+    elif index < (self.__size / 2):
       count = 1
       cur = self.__header.next
       while count < index:
