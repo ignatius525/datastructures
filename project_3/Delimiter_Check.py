@@ -1,9 +1,23 @@
 import sys # for sys.argv, the command-line arguments
+from Stack import Stack 
 
 def delimiter_check(filename):
   # TODO replace pass with an implementation that returns True
   # if the delimiters (), [], and {} are balanced and False otherwise.
-  pass
+  stack = Stack()
+  openDelims = ['(', '[', '{']
+  closeDelims = [')',']','}']
+  closeToOpen = {')':'(', ']':'[', '}':'{'}
+  for c in filename:
+    if c in openDelims:
+      stack.push(c)
+    elif c in closeDelims:
+      if closeToOpen[c] != stack.pop():
+        return False
+    print(stack)
+  return (len(stack) == 0)
+
+  
 
 if __name__ == '__main__':
   # The list sys.argv contains everything the user typed on the command 
