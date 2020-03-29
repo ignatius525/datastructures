@@ -86,6 +86,8 @@ class Array_Deque(Deque):
     
   def peek_front(self):
     # TODO replace pass with your implementation.
+    if self.__size==0:
+      return
     return self.__contents[self.__front]
     
   def push_back(self, val):
@@ -118,6 +120,8 @@ class Array_Deque(Deque):
 
   def peek_back(self):
     # TODO replace pass with your implementation.
+    if self.__size == 0:
+      return
     return self.__contents[self.__back]
 
 # No main section is necessary. Unit tests take its place.

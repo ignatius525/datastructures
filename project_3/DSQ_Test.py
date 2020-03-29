@@ -17,13 +17,21 @@ class DSQTester(unittest.TestCase):
     self.assertEqual('[ ]', str(self.__stack), "Empty list should print as [ ]")
     self.assertEqual('[ ]', str(self.__queue), "Empty list should print as [ ]")
   
-  def test_add_to_empty(self):
+  def test_add_to_empty_stack(self):
     self.__stack.push('Test')
+    self.assertEqual('[ Test ]', str(self.__stack))
+    
+  def test_add_to_empty_queue(self):
     self.__queue.enqueue('Test')
+    self.assertEqual('[ Test ]', str(self.__queue))
+  
+  def test_push_front_to_empty_deque(self):
     self.__deque.push_front('Test')
     self.assertEqual('[ Test ]', str(self.__deque))
-    self.assertEqual('[ Test ]', str(self.__stack))
-    self.assertEqual('[ Test ]', str(self.__queue))
+
+  def test_push_back_to_empty_deque(self):
+    self.__deque.push_back('Test')
+    self.assertEqual('[ Test ]', str(self.__deque))
 
   def test_push_to_stack_size_one(self):
     self.__stack.push('Royale')
